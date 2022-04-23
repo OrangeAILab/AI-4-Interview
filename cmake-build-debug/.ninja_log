@@ -1,0 +1,18 @@
+# ninja log v5
+40	1561	6715401651316684	CMakeFiles/Interviews.dir/back_tracing.cpp.obj	45a58e0230ed7fe
+94	2415	6715584531067220	CMakeFiles/Interviews.dir/basic/bacis_algorithm.cpp.obj	1fc8a8ed4cad5535
+8	2551	6715605106906061	CMakeFiles/Interviews.dir/main.cpp.obj	482a9c4338fa6d61
+2552	4584	6715605120320220	Interviews.exe	3e2857b252eff3dc
+7	2581	6715550522342187	CMakeFiles/Interviews.dir/bacis_algorithm.cpp.obj	b7d9983d81042e7c
+1	342	6723968980404321	build.ninja	d3343bb0ea069dec
+16	1282	6715393627008690	CMakeFiles/Interviews.dir/basic_algorithms.cpp.obj	e0e19844436a205d
+29	3084	6715584537957678	CMakeFiles/Interviews.dir/dynamicProgramming/dp.cpp.obj	a17ff072d5b44979
+9	2399	6715401659654970	CMakeFiles/Interviews.dir/mid.cpp.obj	57d1896c85653079
+173	1561	6715550513545212	CMakeFiles/Interviews.dir/tree.cpp.obj	d2eecf427f9b366a
+133	1564	6715550513126331	CMakeFiles/Interviews.dir/dynamic_progrim.cpp.obj	cf519d909b401d73
+69	2584	6715550522292322	CMakeFiles/Interviews.dir/link_list.cpp.obj	6f040230f202f1c5
+54	1617	6715559890623580	CMakeFiles/Interviews.dir/tree/tree.cpp.obj	6889d03481bf139e
+34	1535	6715605106357542	CMakeFiles/Interviews.dir/stackQueen/stack_queen.cpp.obj	89b0177965f2f09e
+17	2131	6715559895719974	CMakeFiles/Interviews.dir/linkList/link_list.cpp.obj	1343e798a85516bc
+84	2643	6715559901002414	CMakeFiles/Interviews.dir/backTracing/back_tracing.cpp.obj	a61efec97c5ec140
+200	2928	6715584531366433	CMakeFiles/Interviews.dir/mathAlgorithm/math_algorithm.cpp.obj	92a61bdcbbf420cc
