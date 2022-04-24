@@ -4,7 +4,11 @@
 8	2551	6715605106906061	CMakeFiles/Interviews.dir/main.cpp.obj	482a9c4338fa6d61
 2552	4584	6715605120320220	Interviews.exe	3e2857b252eff3dc
 7	2581	6715550522342187	CMakeFiles/Interviews.dir/bacis_algorithm.cpp.obj	b7d9983d81042e7c
+<<<<<<< HEAD
 1	342	6724186006905521	build.ninja	d3343bb0ea069dec
+=======
+1	342	6723968980404321	build.ninja	d3343bb0ea069dec
+>>>>>>> 88346974e1d642e6b983a823b024b68b78a9ddf0
 16	1282	6715393627008690	CMakeFiles/Interviews.dir/basic_algorithms.cpp.obj	e0e19844436a205d
 29	3084	6715584537957678	CMakeFiles/Interviews.dir/dynamicProgramming/dp.cpp.obj	a17ff072d5b44979
 9	2399	6715401659654970	CMakeFiles/Interviews.dir/mid.cpp.obj	57d1896c85653079
