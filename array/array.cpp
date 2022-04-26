@@ -8,6 +8,33 @@
 
 using  namespace  std;
 
+
+
+//剑指 Offer II 008. 和大于等于 target 的最短子数组 [滑动窗口]
+int minSubArrayLen(int target, vector<int>& nums) {
+    int n = nums.size();
+    if (n == 0) return 0;
+
+    int res = INT_MAX;
+    int sum = 0;
+    int start = 0;
+    int end = 0;
+
+    while(end < n){
+        sum += nums[end];
+        while(sum >= target){
+            res = min(res, end - start + 1);
+            sum -= nums[start];
+            ++start;
+        }
+        ++end;
+    }
+
+    return res == INT_MAX ? 0 : res;
+
+}
+
+
 //剑指 Offer II 007. 数组中和为 0 的三个数  [双指针] T=O(N^2) S=O(1)
 vector<vector<int>> threeSum(vector<int>& nums) {
     vector<vector<int>> res;
