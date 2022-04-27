@@ -4,9 +4,31 @@
 
 #include <vector>
 #include <unordered_map>
+#include <unordered_map>
 #include <algorithm>
 
 using  namespace  std;
+
+
+//剑指 Offer II 010. 和为 k 的子数组  [前缀和]
+int subarraySum(vector<int>& nums, int k) {
+    int pre_sum = 0;
+    int count = 0;
+    unordered_map<int, int> map;
+    map[0] = 1;
+
+    for(auto& num : nums){
+        pre_sum += num;
+        if (map.find(pre_sum - k) != map.end()){
+            count += map[pre_sum - k];
+        }
+
+        ++map[pre_sum];
+    }
+    return count;
+
+}
+
 
 
 //剑指 Offer II 009. 乘积小于 K 的子数组 [滑动窗口]
