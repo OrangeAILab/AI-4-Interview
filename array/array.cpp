@@ -9,6 +9,30 @@
 
 using  namespace  std;
 
+//剑指 Offer II 011. 0 和 1 个数相同的子数组 [前缀和]
+int findMaxLength(vector<int>& nums) {
+    int n = nums.size();
+    unordered_map<int, int> map;
+    vector<int> pre_sum(n+1, 0);
+    int res = 0;
+
+    for(int i = 1; i <= n; ++i){
+        pre_sum[i] = pre_sum[i - 1] + (nums[i - 1] == 0 ? -1 : 1);
+    }
+
+    for(int i = 0; i <= n; ++i){
+        if (map.count(pre_sum[i])){
+            res = max(res, i - map[pre_sum[i]]);
+        }
+
+        if (!map.count(pre_sum[i])){
+            map[pre_sum[i]] = i;
+        }
+    }
+    return res;
+
+}
+
 
 //剑指 Offer II 010. 和为 k 的子数组  [前缀和]
 int subarraySum(vector<int>& nums, int k) {
