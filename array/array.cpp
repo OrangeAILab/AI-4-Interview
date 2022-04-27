@@ -9,6 +9,34 @@
 using  namespace  std;
 
 
+//剑指 Offer II 009. 乘积小于 K 的子数组 [滑动窗口]
+int numSubarrayProductLessThanK(vector<int>& nums, int k) {
+    //edge
+    if (k <= 1 ) return 0;
+
+    int res = 0;
+    int product = 1;
+    int n = nums.size();
+    //init slide window
+    int start = 0;
+    int end = 0;
+
+    while(end < n){
+        product *= nums[end];
+
+        while(product >= k){
+                product /= nums[start];
+                ++start;
+        }
+
+        res += (end - start + 1);
+        ++end;
+    }
+
+    return res;
+
+}
+
 
 //剑指 Offer II 008. 和大于等于 target 的最短子数组 [滑动窗口]
 int minSubArrayLen(int target, vector<int>& nums) {
