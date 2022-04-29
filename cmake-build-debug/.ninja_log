@@ -4,7 +4,7 @@
 8	2551	6715605106906061	CMakeFiles/Interviews.dir/main.cpp.obj	482a9c4338fa6d61
 2552	4584	6715605120320220	Interviews.exe	3e2857b252eff3dc
 7	2581	6715550522342187	CMakeFiles/Interviews.dir/bacis_algorithm.cpp.obj	b7d9983d81042e7c
-1	342	6725059705841844	build.ninja	d3343bb0ea069dec
+1	342	6728489738926318	build.ninja	d3343bb0ea069dec
 16	1282	6715393627008690	CMakeFiles/Interviews.dir/basic_algorithms.cpp.obj	e0e19844436a205d
 29	3084	6715584537957678	CMakeFiles/Interviews.dir/dynamicProgramming/dp.cpp.obj	a17ff072d5b44979
 9	2399	6715401659654970	CMakeFiles/Interviews.dir/mid.cpp.obj	57d1896c85653079
@@ -16,3 +16,7 @@
 17	2131	6715559895719974	CMakeFiles/Interviews.dir/linkList/link_list.cpp.obj	1343e798a85516bc
 84	2643	6715559901002414	CMakeFiles/Interviews.dir/backTracing/back_tracing.cpp.obj	a61efec97c5ec140
 200	2928	6715584531366433	CMakeFiles/Interviews.dir/mathAlgorithm/math_algorithm.cpp.obj	92a61bdcbbf420cc
+129	2481	6728565393922131	CMakeFiles/Interviews.dir/linkList/link_list.cpp.obj	1343e798a85516bc
+173	3483	6728565394919475	CMakeFiles/Interviews.dir/array/array.cpp.obj	247e557e969fc21
+30	3985	6728565400634178	CMakeFiles/Interviews.dir/backTracing/back_tracing.cpp.obj	a61efec97c5ec140
+61	4490	6728565406531787	CMakeFiles/Interviews.dir/dynamicProgramming/dp.cpp.obj	a17ff072d5b44979
