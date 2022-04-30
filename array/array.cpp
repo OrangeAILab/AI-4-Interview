@@ -11,6 +11,45 @@
 
 using  namespace  std;
 
+
+//剑指 Offer II 037. 小行星碰撞 [栈模拟]
+vector<int> asteroidCollision(vector<int>& asteroids) {
+
+    stack<int> stack;
+    stack.push(INT_MIN);
+
+    for(auto num : asteroids){
+        if (num >= 0) {
+            stack.push(num);
+        }else{//满足碰撞条件
+            while(stack.top() > 0 && stack.top() < -num){
+                stack.pop();
+            }
+            if (stack.top() < 0){
+                stack.push(num);
+            }
+            if (stack.top() == -num){
+                stack.pop();
+                continue;
+            }
+            if (stack.top() > - num){
+                continue;
+            }
+        }
+    }
+
+    int res_size = stack.size() - 1;
+    vector<int> res(res_size, 0);
+
+    for(int i = res_size - 1; i > 0; --i){
+        res[i] = stack.top();
+        stack.pop();
+    }
+
+    return res;
+}
+
+
 //剑指 Offer II 036. 后缀表达式 [栈 + 逆波兰序列]
 bool is_number(string& token){
     return !(token == "+" || token == "-" || token == "*" || token == "/");
