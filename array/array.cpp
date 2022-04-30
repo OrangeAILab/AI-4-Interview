@@ -2,12 +2,55 @@
 // Created by Orange on 2022/4/22.
 //
 
+#include <stdlib.h>
 #include <vector>
 #include <unordered_map>
 #include <unordered_map>
 #include <algorithm>
 
 using  namespace  std;
+
+//剑指 Offer II 030. 插入、删除和随机访问都是 O(1) 的容器 [变长数组 + 哈希表]
+class RandomizedSet {
+
+private:
+    unordered_map<int,int> map;
+    vector<int> nums;
+public:
+    /** Initialize your data structure here. */
+    RandomizedSet() {
+        srand((unsigned) time_t(nullptr));
+    }
+
+    /** Inserts a value to the set. Returns true if the set did not already contain the specified element. */
+    bool insert(int val) {
+        if (map.count(val)) return false;
+
+        nums.push_back(val);
+        map[val] = nums.size() - 1;
+        return true;
+    }
+
+    /** Removes a value from the set. Returns true if the set contained the specified element. */
+    bool remove(int val) {
+        if (!map.count(val)) return false;
+
+        int tail = nums.back();
+        int index = map[val];
+        nums[index] = tail;
+        nums.pop_back();
+        map[tail] = index;
+        map.erase(val);
+        return true;
+    }
+
+    /** Get a random element from the set. */
+    int getRandom() {
+        int rand_index = rand() % nums.size();
+        return nums[rand_index];
+    }
+};
+
 
 //剑指 Offer II 011. 0 和 1 个数相同的子数组 [前缀和]
 int findMaxLength(vector<int>& nums) {
