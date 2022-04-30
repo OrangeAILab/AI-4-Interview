@@ -4,11 +4,37 @@
 
 #include <stdlib.h>
 #include <vector>
+#include <string>
 #include <unordered_map>
 #include <unordered_map>
 #include <algorithm>
 
 using  namespace  std;
+
+//剑指 Offer II 035. 最小时间差
+int parse_time(string& timeString){
+    return  ((timeString[0] - '0') * 10 + (timeString[1] - '0')) * 60 + ((timeString[3] - '0') * 10) + (timeString[4] - '0');
+}
+
+int findMinDifference(vector<string>& timePoints) {
+    int ans = INT_MAX;
+    int n = timePoints.size();
+    if ( n > (24 * 60)) return 0;//必有重复
+
+    sort(timePoints.begin(), timePoints.end());
+
+    int pre_minutes = parse_time(timePoints[0]);
+
+    for(int i = 1; i < n; ++i){
+        int cur_minutes = parse_time(timePoints[i]);
+        ans = min(ans, cur_minutes - pre_minutes);
+        pre_minutes = cur_minutes;
+    }
+
+    ans = min(ans, parse_time(timePoints[0]) + 24 * 60 - pre_minutes);
+    return ans;
+}
+
 
 //剑指 Offer II 030. 插入、删除和随机访问都是 O(1) 的容器 [变长数组 + 哈希表]
 class RandomizedSet {
