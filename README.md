@@ -2,10 +2,10 @@
 We collect the common knowledges and codes for AI interviews.
 This repo includes the hot Leetcodes and high frequent AI codes and questions in interviews
 
---------------------------------------------------------------------------
 <p align="center">
 <img align="center" src="doc/imgs/logo.png", width=1600>
 <p>
+
   --------------------------------------------------------------------------------
 
 [English](./README.md) | 简体中文
