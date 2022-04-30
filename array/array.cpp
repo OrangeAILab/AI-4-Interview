@@ -6,10 +6,51 @@
 #include <vector>
 #include <string>
 #include <unordered_map>
-#include <unordered_map>
+#include <stack>
 #include <algorithm>
 
 using  namespace  std;
+
+//剑指 Offer II 036. 后缀表达式 [栈 + 逆波兰序列]
+bool is_number(string& token){
+    return !(token == "+" || token == "-" || token == "*" || token == "/");
+}
+
+int evalRPN(vector<string>& tokens) {
+    //tokens已经是一个逆波兰序列
+
+    int n = tokens.size();
+    stack<int> express_stack;
+
+    for(int i = 0; i < n; ++i){
+        if (is_number(tokens[i])){
+            //convert into integer
+            express_stack.push(atoi(tokens[i].c_str()));
+        }else{
+            int num1 = express_stack.top(); express_stack.pop();
+            int num2 = express_stack.top(); express_stack.pop();
+            //expression
+            switch (tokens[i][0]) {
+                case '+' :
+                    express_stack.push(num2 + num1);
+                    break;
+                case '-' :
+                    express_stack.push(num2 - num1);
+                    break;
+                case '*' :
+                    express_stack.push(num2 * num1);
+                    break;
+                case '/' :
+                    express_stack.push(num2 / num1);
+                    break;
+            }
+        }
+    }
+
+    return express_stack.top();
+
+}
+
 
 //剑指 Offer II 035. 最小时间差
 int parse_time(string& timeString){
