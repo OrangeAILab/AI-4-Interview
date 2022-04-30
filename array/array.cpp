@@ -11,17 +11,37 @@
 
 using  namespace  std;
 
+//剑指 Offer II 038. 每日温度 [单调栈]
+vector<int> dailyTemperatures(vector<int>& temperatures) {
+    int n = temperatures.size();
+    vector<int> res(n, 0);
+
+    stack<int> stack;
+
+    for(int i = 0; i < n; ++i){
+        while(!stack.empty() && temperatures[i] > temperatures[stack.top()]){
+            int pre_index = stack.top();
+            res[pre_index] = i - pre_index;
+            stack.pop();
+        }
+        stack.push(i);
+    }
+
+    return res;
+}
+
 
 //剑指 Offer II 037. 小行星碰撞 [栈模拟]
 vector<int> asteroidCollision(vector<int>& asteroids) {
 
     stack<int> stack;
-    stack.push(INT_MIN);
+    stack.push(INT_MIN);//先存一个最小的负数，默认正数的正方向，负数为负方向。
 
     for(auto num : asteroids){
         if (num >= 0) {
             stack.push(num);
-        }else{//满足碰撞条件
+        }else{
+            //栈中始终存在最小的负数，因此不需要判断栈空
             while(stack.top() > 0 && stack.top() < -num){
                 stack.pop();
             }
