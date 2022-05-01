@@ -11,5 +11,6 @@ int binary_search(vector<int>& nums, int target);
 void heap_adjust(vector<int>& nums, int len, int index);
 void heap_sort(vector<int>& nums);
 
+void bucket_sort(vector<int>& nums);
 
 #endif //INTERVIEWS_BASIC_ALGORITHM_H

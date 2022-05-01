@@ -21,9 +21,57 @@
 
 using namespace std;
 
+//桶排序
+void bucket_sort(vector<int>& nums){
+    /*
+     *
+     * 平均时间复杂度：O(n + k)
+     *最佳时间复杂度：O(n + k)
+     *最差时间复杂度：O(n ^ 2)
+     *空间复杂度：O(n * k)
+     *稳定性：稳定
+    */
+    int n = nums.size();
+
+    //计算桶的个数  get max min
+    int max = *max_element(nums.begin(), nums.end());
+    int min = *min_element(nums.begin(), nums.end());
+    int bucket_numbers = (max - min) / n + 1;//均匀分布
+
+    vector<int>* bucket = new vector<int>[bucket_numbers];//桶的个数
+
+    //映射到桶内
+    //int k = int(sqrt(n));
+    for(int i = 0; i < n; ++i){
+        int id = (nums[i] - min) / n;
+        bucket[id].push_back(nums[i]);
+    }
+
+    //桶内排序
+    for(int i = 0; i < bucket_numbers; ++i){
+        if(bucket[i].size() > 0){
+            std::sort(bucket[i].begin(), bucket[i].end());
+        }
+    }
+
+    //拼接所有桶
+    int index = 0;
+    for(int i = 0; i < bucket_numbers; ++i){
+        for(int j = 0; j < bucket[i].size(); ++j){
+            nums[index++] = bucket[i][j];
+        }
+    }
+}
+
 
 //堆排序
 void heap_adjust(vector<int>& nums, int len, int index){
+    /*
+     *时间复杂度：O(nlogn)
+     *空间复杂度：O(1)
+     *稳定性：不稳定
+     */
+
     int left = index * 2 + 1;
     int right = index * 2 + 2;
 
@@ -76,8 +124,12 @@ int binary_search(vector<int>& nums, int target){
 void quick_sort(vector<int>& array, int start, int end){
     /*
      * 49 , 38, 65, 97, 76, 12, 27, 50
-     *
+     *平均时间复杂度：O（nlogn）
+     *最坏时间复杂度：O（n*n）
+     *辅助空间O（logn）
+     *稳定性：不稳定
      */
+
     if ( start < end){
         int i = start;
         int j = end;
