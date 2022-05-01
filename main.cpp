@@ -34,12 +34,12 @@ int main(){
 //    std::cout<< "pow(x,n)="<<myPow(x,n)<<endl;
 
 
-    MaxQueue* obj1 = new MaxQueue();
-    obj1->push_back(6);
-    cout<< "obj1 max_value: " << obj1->max_value() << " front_value:"<< obj1->pop_front() << endl;
-    MaxQueue obj2;
-    obj2.push_back(8);
-    cout<< "obj2 max_value: " << obj2.max_value() << " front_value:"<< obj2.pop_front() << endl;
+//    MaxQueue* obj1 = new MaxQueue();
+//    obj1->push_back(6);
+//    cout<< "obj1 max_value: " << obj1->max_value() << " front_value:"<< obj1->pop_front() << endl;
+//    MaxQueue obj2;
+//    obj2.push_back(8);
+//    cout<< "obj2 max_value: " << obj2.max_value() << " front_value:"<< obj2.pop_front() << endl;
 
 
 //    vector<int> array = {49 , 38, 65, 97, 76, 12, 27, 50};
@@ -48,10 +48,20 @@ int main(){
 //        cout << array[i] << ' ';
 //    }
 //    cout<< endl;
+    vector<int> nums = {8, 1, 14, 3, 21, 5, 7, 10};
+    heap_sort(nums);
+    for(auto& num : nums){
+        std::cout<<num<<' ';
+    }
+    std::cout<<endl;
+    std::cout<<"heap sort:"<<endl;
+    for(int i=0;i<nums.size();i++)
+    {
+        cout<<nums[i]<<' ';
+    }
 
 
     return 0;
 }
 
 
-}
