@@ -13,6 +13,45 @@
 
 using  namespace  std;
 
+//剑指 Offer II 061. 和最小的 k 个数对 [堆/优先队列]
+vector<vector<int>> kSmallestPairs(vector<int>& nums1, vector<int>& nums2, int k) {
+    vector<vector<int>> res;
+    int n = nums1.size();
+    int m = nums2.size();
+
+    bool flag = true;
+
+    if (n > m){
+        std::swap(nums1, nums2);
+        std::swap(m, n);
+        flag = false;
+    }
+
+    auto compare = [&] (pair<int,int>& a, pair<int,int>& b){
+        return (nums1[a.first] + nums2[a.second]) > (nums1[b.first] + nums2[b.second]);
+
+    };
+    priority_queue<pair<int,int>, vector<pair<int,int>>, decltype(compare)> queue(compare);
+
+    //输出构造长度为K的小顶堆
+    for(int i = 0; i < min(m, k); ++i){
+        queue.push({i, 0});
+    }
+
+    while(res.size() < k && queue.size()){
+        pair<int,int> heap_top = queue.top();
+        queue.pop();
+
+        flag ? res.push_back({nums1[heap_top.first], nums2[heap_top.second]}): res.push_back({nums2[heap_top.second], nums1[heap_top.first]});
+
+        if (heap_top.second + 1 < m){
+            queue.push({heap_top.first, heap_top.second + 1});
+        }
+    }
+    return res;
+}
+
+
 //264. 丑数 II    [堆/优先队列]   T = nlogn
 int nthUglyNumber_(int n) {
     vector<int> ugly_factors{2, 3, 5};
