@@ -1,18 +1,50 @@
 //
 // Created by Orange on 2022/4/22.
 //
-
+#include <iostream>
 #include <stdlib.h>
 #include <vector>
 #include <string>
 #include <unordered_map>
 #include <stack>
 #include <queue>
+#include <set>
 #include <algorithm>
 
 using  namespace  std;
 
-//剑指 Offer II 060. 出现频率最高的 k 个数字  [堆/优先队列] T=nlogk
+//264. 丑数 II    [堆/优先队列]   T = nlogn
+int nthUglyNumber_(int n) {
+    vector<int> ugly_factors{2, 3, 5};
+    long heap_top;
+    priority_queue<long, vector<long>, greater<long>> queue;
+    set<long> set;
+
+    queue.push(1L);
+    set.insert(1L);
+
+    for(int i = 1; i <= n; ++i){
+
+        if(n == 1) return 1;
+
+        //堆顶元素
+        heap_top = queue.top();
+        queue.pop();
+        for(auto& ugly_factor: ugly_factors){
+            long num = ugly_factor * heap_top;
+            if(set.find(num) == set.end()){
+                queue.push(num);
+                set.insert(num);
+            }
+        }
+    }
+
+    return heap_top;
+
+}
+
+
+//剑指 Offer II 060. 出现频率最高的 k 个数字  [堆/优先队列]  T=nlogk
 struct compare{
     bool operator()(pair<int, int> p, pair<int, int> q){
         return p.second > q.second;

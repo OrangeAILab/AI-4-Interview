@@ -5,4 +5,7 @@
 #ifndef INTERVIEWS_ARRAY_H
 #define INTERVIEWS_ARRAY_H
 
+using namespace  std;
+int nthUglyNumber_(int n);
+
 #endif //INTERVIEWS_ARRAY_H
