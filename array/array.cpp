@@ -7,9 +7,51 @@
 #include <string>
 #include <unordered_map>
 #include <stack>
+#include <queue>
 #include <algorithm>
 
 using  namespace  std;
+
+//剑指 Offer II 060. 出现频率最高的 k 个数字    [堆/优先队列] T=NlogN
+struct compare{
+    bool operator()(pair<int, int> p, pair<int, int> q){
+        return p.second > q.second;
+    }
+};
+
+vector<int> topKFrequent(vector<int>& nums, int k) {
+
+    //1.遍历数组，使用字典统计词频 T = O(N)
+    unordered_map<int, int> map;
+    for(auto& num : nums){
+        map[num] ++;
+    }
+
+    //存入长度为K的小顶堆进行排序
+    priority_queue<pair<int, int>, vector<pair<int, int>>, compare> que;
+    for(auto& key_value : map){
+        que.push(key_value);
+        if(que.size() > k){
+            que.pop();
+        }
+    }
+
+    //输出
+    vector<int> res;
+    while(!que.empty()){
+        res.push_back(que.top().first);
+        que.pop();
+    }
+
+    return res;
+}
+
+
+//剑指 Offer II 057. 值和下标之差都在给定的范围内
+
+
+
+
 
 //剑指 Offer II 038. 每日温度 [单调栈]
 vector<int> dailyTemperatures(vector<int>& temperatures) {
