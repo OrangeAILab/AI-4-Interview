@@ -12,7 +12,7 @@
 
 using  namespace  std;
 
-//剑指 Offer II 060. 出现频率最高的 k 个数字    [堆/优先队列] T=NlogN
+//剑指 Offer II 060. 出现频率最高的 k 个数字  [堆/优先队列] T=nlogk
 struct compare{
     bool operator()(pair<int, int> p, pair<int, int> q){
         return p.second > q.second;
