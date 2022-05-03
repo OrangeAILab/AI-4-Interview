@@ -8,4 +8,5 @@
 using namespace  std;
 int nthUglyNumber_(int n);
 
+vector<vector<int>> kSmallestPairs_(vector<int>& nums1, vector<int>& nums2, int k);
 #endif //INTERVIEWS_ARRAY_H

@@ -13,12 +13,12 @@
 
 using  namespace  std;
 
+
 //剑指 Offer II 061. 和最小的 k 个数对 [堆/优先队列]
-vector<vector<int>> kSmallestPairs(vector<int>& nums1, vector<int>& nums2, int k) {
+vector<vector<int>> kSmallestPairs_(vector<int>& nums1, vector<int>& nums2, int k) {
     vector<vector<int>> res;
     int n = nums1.size();
     int m = nums2.size();
-
     bool flag = true;
 
     if (n > m){
@@ -27,26 +27,28 @@ vector<vector<int>> kSmallestPairs(vector<int>& nums1, vector<int>& nums2, int k
         flag = false;
     }
 
-    auto compare = [&] (pair<int,int>& a, pair<int,int>& b){
+    auto compare = [&] (const pair<int,int>& a, const pair<int,int>& b){
         return (nums1[a.first] + nums2[a.second]) > (nums1[b.first] + nums2[b.second]);
-
     };
+
     priority_queue<pair<int,int>, vector<pair<int,int>>, decltype(compare)> queue(compare);
 
     //输出构造长度为K的小顶堆
-    for(int i = 0; i < min(m, k); ++i){
+    for(int i = 0; i < min(n, k); ++i){
         queue.push({i, 0});
     }
 
     while(res.size() < k && queue.size()){
-        pair<int,int> heap_top = queue.top();
+        //pair<int,int> heap_top = queue.top();
+        auto [a, b] = queue.top();
         queue.pop();
 
-        flag ? res.push_back({nums1[heap_top.first], nums2[heap_top.second]}): res.push_back({nums2[heap_top.second], nums1[heap_top.first]});
+        flag ? res.push_back({nums1[a], nums2[b]}): res.push_back({nums2[b], nums1[a]});
 
-        if (heap_top.second + 1 < m){
-            queue.push({heap_top.first, heap_top.second + 1});
+        if (b + 1 < m){
+            queue.push({a, b + 1});
         }
+
     }
     return res;
 }
