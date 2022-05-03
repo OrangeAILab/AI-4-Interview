@@ -1,12 +1,36 @@
 //
 // Created by Orange on 2022/4/13.
-//
+//本节包含基础的数据结构与基础的算法
 /*
+ * 基础的数据结构：
+ *          线性表:
+ *              创建链表/循环双向链表以及基础的增删改查:
+ *
+ *              创建顺序栈/队列、链式栈/队列以及基础的增删改查:
+ *
+ *              创建双向队列/优先队列以及基础的增删改查:
+ *                  优先队列:priority_queue<Type, Container, Functional>
+ *
+ *
+ *          二叉树:
+ *              递归方式创建二叉树:
+ *              非递归方式创建二叉树:
+ *              字典树:
+ *
+ *          图：
+ *              迪杰斯特拉
+ *              弗洛伊德
+ *              拓扑排序
+ *
  * 排序算法：
- *         快速排序、归并排序、桶排序、堆排序
+ *         快速排序:
+ *         归并排序:
+ *         桶排序:
+ *         堆排序:
  *
  * 查找算法：
- *         二分查找、哈希表
+ *         二分查找:
+ *         哈希查找:
  */
 
 #include <iostream>
@@ -17,9 +41,74 @@
 #include <string>
 #include <unordered_map>
 #include <math.h>
+#include <functional>
 #include <algorithm>
 
+
 using namespace std;
+
+//字典树  208. 实现 Trie (前缀树)
+class Trie{
+private:
+    bool is_words;
+    Trie* dict[26];
+
+public:
+    //构造函数
+    Trie(){
+        this->is_words = false;
+
+        for(int i = 0; i < 26; ++i){
+            this->dict[i] = nullptr;
+        }
+    }
+
+    //析构函数
+    ~Trie(){
+        for(int i = 0; i < 26; ++i){
+            if(this->dict[i] != nullptr) delete this->dict[i];
+        }
+    }
+
+    //插入
+    void insert(string word){
+        Trie* root = this;
+        for(auto& ch : word){
+            int id = ch - 'a';
+            if (root->dict[id] == nullptr)  root->dict[id] = new Trie();
+            root = root->dict[id];
+        }
+        root->is_words = true;//构成完整的单词
+    }
+
+    //查找
+    bool search(string word){
+        Trie* root = this;
+        for(auto& ch : word){
+            int id = ch - 'a';
+            if (root->dict[id] == nullptr) return false;
+            root = root->dict[id];
+        }
+        return root->is_words;
+    }
+
+    //前缀
+    bool startsWith(string prefix){
+        Trie* root = this;
+        for(auto& ch : prefix){
+            int id = ch - 'a';
+            if (root->dict[id] == nullptr) return false;
+            root = root->dict[id];
+        }
+        return true;
+    }
+
+};
+
+
+
+
+
 
 //桶排序
 void bucket_sort(vector<int>& nums){
@@ -62,6 +151,7 @@ void bucket_sort(vector<int>& nums){
         }
     }
 }
+
 
 
 //堆排序
