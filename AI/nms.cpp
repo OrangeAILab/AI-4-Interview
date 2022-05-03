@@ -30,27 +30,27 @@ double iou(Bbox& box1, Bbox& box2){
 bool sort_score(Bbox& bbox1, Bbox& bbox2){
     return (bbox1.score > bbox2.score);
 }
-
-vector<Bbox> nms(vector<Bbox>& bbox, double thresh){
-    vector<Bbox> result;
-
-    while (bbox.size() > 0){
-
-        std::sort(bbox.begin(), bbox.end(), sort_score);
-
-        result.push_back(bbox[0]);
-
-        for(int i = 0; i < bbox.size() - 1; ++i){
-            double iou_score = iou(bbox[0], bbox[i + 1]);
-            if (iou_score > thresh){
-                bbox.erase(bbox[i + 1]);
-            }
-        }
-        bbox.erase(bbox[0]);
-    }
-
-    return bbox;
-}
+//
+//vector<Bbox> nms(vector<Bbox>& bbox, double thresh){
+//    vector<Bbox> result;
+//
+//    while (bbox.size() > 0){
+//
+//        std::sort(bbox.begin(), bbox.end(), sort_score);
+//
+//        result.push_back(bbox[0]);
+//
+//        for(int i = 0; i < bbox.size() - 1; ++i){
+//            double iou_score = iou(bbox[0], bbox[i + 1]);
+//            if (iou_score > thresh){
+//                bbox.erase(bbox[i + 1]);
+//            }
+//        }
+//        bbox.erase(bbox[0]);
+//    }
+//
+//    return bbox;
+//}
 
 
 

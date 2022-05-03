@@ -20,7 +20,7 @@
 #include "backTracing/back_tracing.h"
 #include "linkList/link_list.h"
 #include "stackQueen/stack_queen.h"
-
+#include "array/array.h"
 using namespace std;
 
 
@@ -48,20 +48,60 @@ int main(){
 //        cout << array[i] << ' ';
 //    }
 //    cout<< endl;
-    vector<int> nums = {8, 1, 14, 3, 21, 5, 7, 10};
-    heap_sort(nums);
-    for(auto& num : nums){
-        std::cout<<num<<' ';
-    }
-    std::cout<<endl;
-    std::cout<<"heap sort:"<<endl;
-    for(int i=0;i<nums.size();i++)
-    {
-        cout<<nums[i]<<' ';
-    }
 
 
+//    vector<int> nums = {8, 1, 14, 3, 21, 5, 7, 10};
+//    heap_sort(nums);
+//    std::cout<<"heap sort:"<<endl;
+//    for(auto& num : nums){
+//        std::cout<<num<<' ';
+//    }
+//    std::cout<<endl;
+//
+//    std::cout<<"bucket sort:"<<endl;
+//    bucket_sort(nums);
+//    for(int i=0;i<nums.size();i++)
+//    {
+//        cout<<nums[i]<<' ';
+//    }
+
+//    int n = 10;
+//    cout<<"ugly number:"<<nthUglyNumber(10);
+
+//    vector<int> nums1 = {1,2};
+//    vector<int> nums2 = {3};
+//    int k = 3;
+//    vector<vector<int>> res;
+//    res =  kSmallestPairs(nums1,  nums2, k);
+//
+//    for(int i = 0; i < res.size(); ++i){
+//        for(auto& num : res[i]){
+//            std::cout<<num<<' ';
+//        }
+//        std::cout<<endl;
+//    }
+
+//    * Trie* obj = new Trie();
+//    * obj->insert(word);
+//    * bool param_2 = obj->search(word);
+//    * bool param_3 = obj->startsWith(prefix);
+
+//    Trie* trie = new Trie();//在堆中实例化对象
+//
+//    trie->insert("apple");
+//    std::cout<<trie->search("apple")<<endl;   // 返回 True
+//    std::cout<<trie->search("app")<<endl;     // 返回 False
+//    std::cout<< trie->startsWith("app")<<endl; // 返回 True
+//    trie->insert("app");
+//    std::cout<<trie->search("app")<<endl;     // 返回 True
+
+    //Trie2* trie = new Trie2();
+
+    //std::cout<<"encoding length:"<<trie->insert("time");
+    vector<string> words{"time","me","bell"};
+    std::cout<<"Tire encoding :" <<minimumLengthEncoding(words);
     return 0;
+
 }
 
 

@@ -11,11 +11,35 @@
 #include <set>
 #include <algorithm>
 
+#include "array.h"
 using  namespace  std;
 
 
+//剑指 Offer II 065. 最短的单词编码 [字典树的应用]
+int minimumLengthEncoding(vector<string>& words) {
+    //按照字符的长度递减排序
+    auto compare = [&](string& word1, string& word2){
+        return word1.size() >= word2.size();
+    };
+    std::sort(words.begin(), words.end(),compare);
+
+    int len = 0;
+    Trie2* trie = new Trie2();
+    for(auto& word : words){
+        len += trie->insert(word);
+    }
+
+    return len;
+}
+
+
+
+
+
+
+
 //剑指 Offer II 061. 和最小的 k 个数对 [堆/优先队列]
-vector<vector<int>> kSmallestPairs_(vector<int>& nums1, vector<int>& nums2, int k) {
+vector<vector<int>> kSmallestPairs(vector<int>& nums1, vector<int>& nums2, int k) {
     vector<vector<int>> res;
     int n = nums1.size();
     int m = nums2.size();
