@@ -13,6 +13,7 @@ vector<vector<int>> kSmallestPairs(vector<int>& nums1, vector<int>& nums2, int k
 
 //剑指 Offer II 065. 最短的单词编码 [字典树的应用]
 int minimumLengthEncoding(vector<string>& words);
+
 class Trie2{
 private:
     bool is_new_word;
