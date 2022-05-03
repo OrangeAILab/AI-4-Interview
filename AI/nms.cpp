@@ -30,7 +30,7 @@ double iou(Bbox& box1, Bbox& box2){
 bool sort_score(Bbox& bbox1, Bbox& bbox2){
     return (bbox1.score > bbox2.score);
 }
-//
+
 //vector<Bbox> nms(vector<Bbox>& bbox, double thresh){
 //    vector<Bbox> result;
 //
