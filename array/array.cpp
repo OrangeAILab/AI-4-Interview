@@ -19,14 +19,14 @@ using  namespace  std;
 int minimumLengthEncoding(vector<string>& words) {
     //按照字符的长度递减排序
     auto compare = [&](string& word1, string& word2){
-        return word1.size() >= word2.size();
+        return word1.size() > word2.size();
     };
     std::sort(words.begin(), words.end(),compare);
 
     int len = 0;
-    Trie2* trie = new Trie2();
+    Trie2 trie =  Trie2();
     for(auto& word : words){
-        len += trie->insert(word);
+        len += trie.insert(word);
     }
 
     return len;

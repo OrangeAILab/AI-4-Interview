@@ -33,7 +33,7 @@ public:
         }
     }
 
-    int insert(string word){
+    int insert(string& word){
         /* 输入word = “time”
          * 插入 "emit"
          * 返回 "emit#" 编码长度 5
@@ -55,7 +55,7 @@ public:
                 root->is_new_word = false;
             }
         }
-        return root->is_new_word ? (size + 1 ): 0;
+        return root->is_new_word ? (size + 1 ) : 0;
     }
 
     bool serach(string word){
