@@ -188,7 +188,7 @@ void heap_sort(vector<int>& nums){
 }
 
 
-//二分查找
+//二分查找   T = O(log n)
 int binary_search(vector<int>& nums, int target){
     int low = 0, high = nums.size() - 1;
     while(low <= high){

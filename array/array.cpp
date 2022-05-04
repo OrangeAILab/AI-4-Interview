@@ -14,6 +14,25 @@
 
 using  namespace  std;
 
+
+//剑指 Offer II 070. 排序数组中只出现一次的数字 【二分查找 T=logn】
+int singleNonDuplicate(vector<int>& nums) {
+    int n = nums.size();
+    int left = 0;
+    int right = n - 1;
+    while(left < right){
+        int mid = (right - left) / 2 + left;
+        if (mid % 2 == 0){
+            if (mid + 1 < n && nums[mid] == nums[mid + 1]) left = mid + 1;
+            else right = mid;
+        }else{
+            if (nums[mid - 1] >= 0 && nums[mid] == nums[mid - 1]) left = mid + 1;
+            else right = mid;
+        }
+    }
+    return nums[left];
+}
+
 //剑指 Offer II 067. 最大的异或    【字典树·位运算】
 class Trie4{
 private:
