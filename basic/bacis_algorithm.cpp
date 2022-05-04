@@ -47,7 +47,7 @@
 
 using namespace std;
 
-//字典树  208. 实现 Trie (前缀树)
+//字典树  208. 实现 Trie 【字典树】
 class Trie{
 private:
     bool is_words;

@@ -5,6 +5,7 @@
 #include <stdlib.h>
 #include <vector>
 #include <string>
+#include <sstream>
 #include <unordered_map>
 #include <stack>
 #include <queue>
@@ -13,8 +14,79 @@
 
 using  namespace  std;
 
+//剑指 Offer II 063. 替换单词 【字典树·查询应用】
+class Trie3{
+private:
+    bool is_word;
+    Trie3* dict[26];
 
-//剑指 Offer II 065. 最短的单词编码 [字典树的应用]
+public:
+    Trie3(){
+        this->is_word = false;
+        for(int i = 0; i < 26; ++i){
+            this->dict[i] = nullptr;
+        }
+    }
+
+    ~Trie3(){
+        for(int i = 0; i < 26; ++i){
+            if (this->dict[i] != nullptr){
+                delete this->dict[i];
+            }
+        }
+    }
+
+    //insert
+    void insert(string& word){
+        Trie3* root = this;
+
+        for(auto& ch : word){
+            int id = ch - 'a';
+            if (root->dict[id] == nullptr) root->dict[id] = new Trie3();
+            root = root->dict[id];
+        }
+        root->is_word = true;
+    }
+
+    //serach
+    string serach(string& word){
+        Trie3* root = this;
+        string pre_str;
+        for(auto& ch : word){
+            //词根匹配结束
+            if (root->is_word) break;
+            int id = ch - 'a';
+            //无匹配，直接返回原字符串
+            if (root->dict[id] == nullptr) {
+                return word;
+            }
+            //保存当前最短词根
+            pre_str += ch;
+            root = root->dict[id];
+        }
+        return pre_str;
+    }
+};
+
+string replaceWords(vector<string>& dictionary, string sentence) {
+    //将词根数组构建一颗字典树
+    Trie3* trie = new Trie3();
+    for(string& word : dictionary)  trie->insert(word);
+
+    string str;
+    string ans;
+    stringstream ss;
+    ss<<sentence;
+
+    while(ss>>str){
+        ans += trie->serach(str);
+        ans += ' ';
+    }
+
+    return ans.substr(0, ans.size() - 1);
+}
+
+//剑指 Offer II 065. 最短的单词编码 【字典树·插入应用】
 class Trie2{
 private:
     bool is_new_word;
@@ -43,7 +115,7 @@ public:
          * 由于"emit"已经插入,"em"一个新单词，返回编码长度0
          */
         Trie2* root = this;
-        root->is_new_word = false;
+        root->is_new_word = false;//需要记录每一个结点是否构成一个新词
         int size = word.size();
         for(int i = size - 1; i >=0; --i){
             int id = word[i] - 'a';

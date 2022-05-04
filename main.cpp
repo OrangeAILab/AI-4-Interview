@@ -11,6 +11,7 @@
 #include <queue>
 #include <deque>
 #include <string>
+#include <sstream>
 #include <unordered_map>
 #include <math.h>
 #include <algorithm>
@@ -98,9 +99,19 @@ int main(){
     //Trie2* trie = new Trie2();
 
     //std::cout<<"encoding length:"<<trie->insert("time");
-    vector<string> words{"time","me","bell"};
-    std::cout<<"Tire encoding :" <<minimumLengthEncoding(words);
-    return 0;
+//    vector<string> words{"mokgggq","pjdislx","bfrbsfs"};
+//    std::cout<<"Tire encoding :" <<minimumLengthEncoding(words);
+//    return 0;
+
+
+//    int a;
+//    string input = "abc 123 def 456 ghi 789" ;
+//    stringstream ss;
+//    ss<<input;
+//    string str;
+//    while(ss>>str)
+//        cout<<str<<endl;
+//    return 0;
 
 }
 
