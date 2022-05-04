@@ -14,6 +14,74 @@
 
 using  namespace  std;
 
+//剑指 Offer II 067. 最大的异或    【字典树·位运算】
+class Trie4{
+private:
+    Trie4* dict[2];
+public:
+    Trie4(){
+        for(int i = 0; i < 2; ++i) this->dict[i] = nullptr;
+    }
+
+    ~Trie4(){
+        for(int i = 0; i < 2; ++i){
+            if (this->dict[i] != nullptr) delete this->dict[i];
+        }
+    }
+
+    //insert 将30位从高到底进行插入
+    void insert(int num){
+        Trie4* root = this;
+
+        for(int i = 30; i >= 0; --i){
+            //获取整数num的第i位的二进制位
+            int u = num >> i & 1;
+            if(root->dict[u] == nullptr){
+                root->dict[u] = new Trie4();
+            }
+            root = root->dict[u];
+        }
+    }
+
+    //search 尽可能地匹配与另一个元素之间的异或值
+    int search(int boy){
+        /*
+         * 搜索之前，默认已经插入，否则可能会空指针异常！
+         */
+        Trie4* root = this;
+        int girl = 0;
+        for(int i = 30; i >= 0; --i){
+            int u = boy >> i & 1;
+            //由于想找异或的她，因此尽量的走相反的路
+            if(root->dict[!u] != nullptr) {
+                root = root->dict[!u];
+                //从高位开始，将二进制转十进制
+                girl = girl * 2 + !u;
+            }else{
+                //实在不行只能走相同的路了
+                root = root->dict[u];
+                girl = girl * 2 + u;
+            }
+        }
+
+        return girl ^ boy;
+    }
+
+};
+
+int findMaximumXOR(vector<int>& nums) {
+    Trie4* trie = new Trie4();
+    for(auto& num : nums) trie->insert(num);
+
+    int max_xor = 0;
+    for(auto& num : nums){
+        max_xor = max(max_xor, trie->search(num));
+    }
+
+    return max_xor;
+}
+
+
 //剑指 Offer II 063. 替换单词 【字典树·查询应用】
 class Trie3{
 private:
@@ -85,6 +153,7 @@ string replaceWords(vector<string>& dictionary, string sentence) {
 
     return ans.substr(0, ans.size() - 1);
 }
+
 
 //剑指 Offer II 065. 最短的单词编码 【字典树·插入应用】
 class Trie2{
