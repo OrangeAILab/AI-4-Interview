@@ -33,6 +33,7 @@ int singleNonDuplicate(vector<int>& nums) {
     return nums[left];
 }
 
+
 //剑指 Offer II 067. 最大的异或    【字典树·位运算】
 class Trie4{
 private:
